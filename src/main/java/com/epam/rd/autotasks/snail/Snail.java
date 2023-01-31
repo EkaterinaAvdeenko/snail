@@ -1,12 +1,31 @@
 package com.epam.rd.autotasks.snail;
 
+import java.util.Scanner;
 public class Snail
 {
     public static void main(String[] args)
     {
-        //Write a program that reads a,b and h (line by lyne in this order) and prints
-        //the number of days for which the snail reach the top of the tree.
-        //a - feet that snail travels up each day, b - feet that slides down each night, h - height of the tree
-
+        Scanner scan = new Scanner(System.in);
+        int a = scan.nextInt();
+        int b = scan.nextInt();
+        int h = scan.nextInt();
+        int day = 1;
+        int highForDay = a;
+//Проверка условия, достижения вершины за один день
+        if (a >= h) {
+            System.out.println(day);
+//не должен быть прирост за день отрицательным или нуль
+        } else if ((a - b) <= 0 && (a - b) * 2 < h) {
+            System.out.println("Impossible");
+        } else {
+//Цикл для подсчета дней
+            while (highForDay < h) {
+                highForDay += (a - b);
+                day++;
+            }
+            System.out.println(day);
+        }
     }
 }
+
+
